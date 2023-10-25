@@ -1,0 +1,2 @@
+/home/fenrir/uni/AAU_P1_G8/build/CMakeFiles/edit_cache.dir
+/home/fenrir/uni/AAU_P1_G8/build/CMakeFiles/rebuild_cache.dir
