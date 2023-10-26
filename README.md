@@ -5,7 +5,7 @@
 ## read additional info file handling
 ```c 
 FILE* text
-fopen("additionalInfo/"array[1]".txt",r);
+text = fopen("additionalInfo/"array[1]".txt",r);
 
 ```
 
