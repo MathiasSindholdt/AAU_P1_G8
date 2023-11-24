@@ -12,11 +12,11 @@
 ## User Choice Vector
 
 ``` csv
-
+choice_1,choice_2,...choice_n
 ```
 
 ## User Grades
 
 ``` csv
-
+(avg),(subject level, grade),(subject level, grade),(subject level, grade),(subject level, grade)...
 ```

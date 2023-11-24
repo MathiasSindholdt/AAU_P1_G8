@@ -1,4 +1,5 @@
 typedef struct  {
+    double avg; // always saved in the [0] index
     char level;
     int grade;
 }Subject;
