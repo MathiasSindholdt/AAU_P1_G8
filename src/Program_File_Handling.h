@@ -10,3 +10,5 @@ int Read_Deep_Education_File();
 Subject* Read_User_Grades_From_File();
 
 Choice_Vector Read_User_Data();
+
+char* Read_Question(int Q_num);

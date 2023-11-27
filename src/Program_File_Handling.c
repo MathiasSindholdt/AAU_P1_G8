@@ -61,8 +61,8 @@ char* Read_Question(int Q_num){
     char * bigger_buf = malloc(sizeof(char) * 300);
     fscanf(Question,"[^~]",&bigger_buf);
     char * final_Question = malloc(sizeof(bigger_buf)/sizeof(bigger_buf[0]));
-    free(bigger_buf);
     final_Question = bigger_buf;
+    free(bigger_buf);
     return final_Question;
 
 }
