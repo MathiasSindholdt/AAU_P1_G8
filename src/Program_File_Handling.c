@@ -47,7 +47,28 @@ Choice_Vector Read_User_Data(){
     return choices;
 }
 
-int Read_Education_File();
+void Read_Education_File(int num, Education Ed){
+    char buf[20];
+    snprintf(buf, 20, "question%d.txt", num);
+    char *file_name = malloc(sizeof(buf) /sizeof(buf[0]));
+    file_name = buf;
+    free(buf);
+    FILE* Education_file = fopen(file_name,"r");
+    fscanf(Education_file ,"[^,],", &Ed.Name);
+    for (int i = 0; i < 15; i++) {
+        fscanf(Education_file, "%d,",&Ed.choice_vector.Answer[i]);
+    }
+    fscanf(Education_file, "[^,],", &Ed.Location);
+    fscanf(Education_file, "[^,],", &Ed.Info);
+    fscanf(Education_file, "%d,", &Ed.requirement_bool);
+    if (Ed.requirement_bool) {
+        fscanf(Education_file, "%lf,", &Ed.Requirements.subjects[0].avg);
+        for (int i = 0; i < 4; i++) {
+            fscanf(Education_file, "%c,%d", &Ed.Requirements.subjects[i].level, &Ed.Requirements.subjects[i].grade);
+        }
+    }
+    fscanf(Education_file, "[^,]",&Ed.tags);
+}
 
 int Read_Deep_Education_File();
 

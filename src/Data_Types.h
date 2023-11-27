@@ -18,6 +18,7 @@ typedef struct{
   char Info[200];
   char Location[25];
   Choice_Vector choice_vector;
-  Requirements req;
+  int requirement_bool;
+  Requirements Requirements;
   char tags[30];
 }Education;
