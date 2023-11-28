@@ -32,7 +32,7 @@ int Save_User_Grades(Subject subjects[10]){
 /*
 * reads the users grades from a file named user_grades.csv
 */
-Subject* Read_User_Grades_From_File(){
+Subject* Read_User_Grades(){
     Subject subjects[10];
     FILE* user_grades =fopen("user_grades.csv","r"); // opens the file user_grades.csv in read mode
     if (user_grades==NULL) { //checks if file was opened succesfully
