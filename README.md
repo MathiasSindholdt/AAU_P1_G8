@@ -1,5 +1,5 @@
 # AAU_P1_G8
-example git merge
+
 # csv file structure
 
 
