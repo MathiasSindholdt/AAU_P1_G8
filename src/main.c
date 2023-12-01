@@ -7,7 +7,6 @@
 
 Choice_Vector User_Choices;
 
-
 int main() { 
 	printf("hello world"); 
 }
