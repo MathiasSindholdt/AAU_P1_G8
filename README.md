@@ -4,7 +4,7 @@
 
 ## Education Database
 ```csv
-name of education, choice vector, location, info, bool that show if there are requirements, optional requirements, tags.
+name of education, choice vector, location, info, bool that show if there are requirements, optional requirements, tags kys.
 ```
 
 ## User Choice Vector
