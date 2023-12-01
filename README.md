@@ -2,9 +2,6 @@
 
 # csv file structure
 
-# LMR Test
-
-
 ## Education Database
 ```csv
 name of education, choice vector, location, info, bool that show if there are requirements, optional requirements, tags.
