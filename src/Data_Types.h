@@ -1,14 +1,15 @@
-typedef struct  {
+
+typedef struct{
     double avg; // always saved in the [0] index
     char level;
     int grade;
 }Subject;
 
-typedef struct  {
+typedef struct{
     int Answer[14];
 }Choice_Vector;
 
-typedef struct  {
+typedef struct{
     Subject subjects[4];
 }Requirements;
 
