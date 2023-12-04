@@ -17,18 +17,25 @@ int KNN(Choice_Vector user_choices, Education* educations) {
         for (int i = 0; i < 14; i++) {
             edu_choice = educations[j].choice_vector.Answer[i]; // assigns answer from choice vector to edu_choice
             usr_choice =  user_choices.Answer[i]; // assigns user answer to usr_choice
-            sum += powf(edu_choice - usr_choice, 2); // adds (a_1 - b_1)^2 to a running sum
+            sum += pow((edu_choice - usr_choice), 2); // adds (a_1 - b_1)^2 to a running sum
+            printf("%d $$ %d \n",edu_choice,usr_choice);
             }
-        educations[j].knn = sqrtf(sum); // assings the square root of the sum to the knn value in the education struct
+        printf("############### %f\n",sum);
+        educations[j].knn = sqrt(sum); // assings the square root of the sum to the knn value in the education struct
         sum = 0;
-    }
+        printf("############### %f\n",educations[j].knn);
 
+    }
+    mergeSort(educations, 0, 13);
 
     return 0;
 }
 
 int display_results(Education *educations){
-    printf("%s | %s | %s \n",educations[1].Name,educations[1].Info,educations[1].Location);
+    for (int i = 0; i < 4; i++) {
+        printf("%s | %s | %s | %f \n",educations[i].Name,educations[i].Info,educations[i].Location, educations[i].knn);
+    }
+   return 0;
 }
 
 
