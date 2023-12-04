@@ -1,7 +1,7 @@
 #include "Program_File_Handling.h"
 #include <stdio.h>
 #include <stdlib.h>
-int length_of_choices = 20; // defines  a default value for the amount of choices the player has i.e. the number of questions
+int length_of_choices = 14; // defines  a default value for the amount of choices the player has i.e. the number of questions
 
 /*
  * Saves the users choice profile to a file named "user_data.csv"
