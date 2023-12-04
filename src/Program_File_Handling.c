@@ -73,7 +73,7 @@ void Read_Education_File(int num, Education Ed){
     snprintf(buf, 20, "education%d.txt", num); // prints "education{some integer}.txt" to the buffer
     char *file_name = malloc(sizeof(buf) /sizeof(buf[0])); // creates an array the size of the file name in the buffer
     file_name = buf;
-    free(buf);
+
     FILE* Education_file = fopen(file_name,"r"); // opens the file in read mode
     if (Education_file==NULL) { // checks if file was opened succesfully
         printf("error opening education%d.txt.csv", num); // prints error if neccesary
@@ -106,7 +106,7 @@ char* Read_Question(int Q_num){
     snprintf(buf, 20, "question%d.txt", Q_num); // prints "question{some integer}.txt" to buffer
     char *file_name = malloc(sizeof(buf) /sizeof(buf[0])); // creates array the size of the file name
     file_name = buf;
-    free(buf); // frees the buffer
+
     FILE* Question = fopen(file_name,"r"); // opens the file in read mode
     if (Question==NULL) { // checks was file is opened succesfully
         printf("error opening question%d.txt.csv", Q_num); // prints error if necessary
@@ -116,7 +116,7 @@ char* Read_Question(int Q_num){
     fscanf(Question,"[^~]",&bigger_buf); // scans question into buffer
     char * final_Question = malloc(sizeof(bigger_buf)/sizeof(bigger_buf[0])); // creates array the size of the question
     final_Question = bigger_buf;
-    free(bigger_buf); // frees the buffer
+
     return final_Question;
 
 }
