@@ -1,6 +1,7 @@
 #include "Program_File_Handling.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Data_Types.h"
 int length_of_choices = 14; // defines  a default value for the amount of choices the player has i.e. the number of questions
 
 /*
@@ -91,7 +92,7 @@ void Read_Education_File(int num, Education Ed){
             fscanf(Education_file, "%c,%d", &Ed.Requirements.subjects[i].level, &Ed.Requirements.subjects[i].grade); // scans the level and grade requirements and assigns them
         }
     }
-    fscanf(Education_file, "[^,]",&Ed.tags); // scans the education's tags
+    fscanf(Education_file, "[^~]",&Ed.tags); // scans the education's tags
     fclose(Education_file); // closes the file
 }
 
