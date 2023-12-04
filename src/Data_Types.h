@@ -1,3 +1,5 @@
+#ifndef Data_Type_H
+#define Data_Type_H
 typedef struct  {
     double avg; // always saved in the [0] index
     char level;
@@ -23,3 +25,4 @@ typedef struct{
   char tags[30];
   float knn;
 }Education;
+#endif
