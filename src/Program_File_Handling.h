@@ -3,7 +3,7 @@ int Save_User_Choices(Choice_Vector choices);
 
 int Save_User_Grades(Subject subjects[10]);
 
-void Read_Education_File(int num, Education Ed);
+Education Read_Education_File(int num);
 
 int Read_Deep_Education_File();
 
