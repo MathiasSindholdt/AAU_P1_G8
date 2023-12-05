@@ -1,3 +1,5 @@
+#ifndef Data_Type_H
+#define Data_Type_H
 typedef struct  {
     double avg; // always saved in the [0] index
     char level;
@@ -5,7 +7,7 @@ typedef struct  {
 }Subject;
 
 typedef struct  {
-    int Answer[20];
+    int Answer[14];
 }Choice_Vector;
 
 typedef struct  {
@@ -21,4 +23,6 @@ typedef struct{
   int requirement_bool;
   Requirements Requirements;
   char tags[30];
+  float knn;
 }Education;
+#endif
