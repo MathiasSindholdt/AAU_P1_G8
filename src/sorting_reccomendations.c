@@ -13,90 +13,51 @@ int KNN(Choice_Vector user_choices, Education* educations) {
     float sum = 0;
     int edu_choice;
     int usr_choice;
+    int length = sizeof(educations)/sizeof(educations[0]);
     for (int j = 0; j < 4; j++) {
         for (int i = 0; i < 14; i++) {
             edu_choice = educations[j].choice_vector.Answer[i]; // assigns answer from choice vector to edu_choice
             usr_choice =  user_choices.Answer[i]; // assigns user answer to usr_choice
             sum += pow((edu_choice - usr_choice), 2); // adds (a_1 - b_1)^2 to a running sum
-            printf("%d $$ %d \n",edu_choice,usr_choice);
             }
-        printf("############### %f\n",sum);
         educations[j].knn = sqrt(sum); // assings the square root of the sum to the knn value in the education struct
         sum = 0;
-        printf("############### %f\n",educations[j].knn);
-
     }
-    mergeSort(educations, 0, 13);
-
+    educations = eduSort(educations);
     return 0;
 }
 
 int display_results(Education *educations){
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 3; i++) {
         printf("%s | %s | %s | %f \n",educations[i].Name,educations[i].Info,educations[i].Location, educations[i].knn);
     }
    return 0;
 }
 
+//Make length dynamic
 
-
-void mergeSort(Education arr[], int l, int r)
+/*
+** This function sorts the recommendations based on thier knn value
+** @Param education array is the array which needs to be sorted
+*/
+Education* eduSort(Education *arr)
 {
-    if (l < r) {
-        int m = l + (r - l) / 2;
-
-        // Sort first and second halves
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-
-        merge(arr, l, m, r);
-    }
-}
-
-void merge(Education arr[], int l, int m, int r)
-{
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
-
-    // Create temp arrays
-    int L[n1], R[n2];
-
-    // Copy data to temp arrays L[] and R[]
-    for (i = 0; i < n1; i++)
-        L[i] = arr[l + i].knn;
-    for (j = 0; j < n2; j++)
-        R[j] = arr[m + 1 + j].knn;
-
-    // Merge the temp arrays back into arr[l..r
-    i = 0;
-    j = 0;
-    k = l;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            arr[k].knn = L[i];
-            i++;
-        }
-        else {
-            arr[k].knn = R[j];
-            j++;
-        }
-        k++;
-    }
-
-    // Copy the remaining elements of L[],
-    // if there are any
-    while (i < n1) {
-        arr[k].knn = L[i];
-        i++;
-        k++;
-    }
-
-    // Copy the remaining elements of R[],
-    // if there are any
-    while (j < n2) {
-        arr[k].knn = R[j];
-        j++;
-        k++;
-    }
+    Education *temp = malloc(sizeof(arr)/sizeof(arr[0]));
+    temp = arr;
+    int i = 0 , j = 0;
+    Education tmp;
+    int length = 4;
+    do
+    {
+        for(j = 0; j < length; j++){
+          if(temp[i].knn < temp[j].knn){
+                // swap
+                tmp = temp[j];
+                temp[j] = temp[i];
+                temp[i] = tmp;
+           }
+       }
+       i++;
+    } while (i < length);
+    return temp;
 }
