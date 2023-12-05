@@ -4,6 +4,7 @@
 #include <stdio.h>
 // here knn will be implemented
 
+
 /*
 ** this function is an implementaion of knn
 ** @Param Choice_Vector that contains the user's answers from the questionaire
@@ -11,6 +12,7 @@
 */
 int KNN(Choice_Vector user_choices, Education* educations) {
     float sum = 0;
+
     int edu_choice;
     int usr_choice;
     int length = sizeof(educations)/sizeof(educations[0]);
@@ -60,4 +62,5 @@ Education* eduSort(Education *arr)
        i++;
     } while (i < length);
     return temp;
+
 }
