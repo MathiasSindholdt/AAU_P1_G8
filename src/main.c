@@ -9,6 +9,8 @@ Choice_Vector User_Choices;
 
 
 int main() {
+    Clear_Screen();
+
     Education ed[4];
 	for (int i=0; i<4; i++) {
         ed[i] = Read_Education_File(i);
