@@ -32,7 +32,8 @@ int KNN(Choice_Vector user_choices, Education* educations, int length) {
 
 int display_results(Education *educations, Choice_Vector Usr){
     for (int i = 0; i < 3; i++) {
-        if(Usr.grade > educations[i].Requirements.subjects[0].avg){
+        printf("%lf,%d,%c \n", educations[i].Requirements.subjects.avg, Usr.requiregrade, Usr.requirelvl);
+        if(Usr.grade > educations[i].Requirements.subjects.avg && Usr.requirelvl==educations[i].Requirements.subjects.level){
         printf("%s | %s | %s | %f \n",educations[i].Name,educations[i].Info,educations[i].Location, educations[i].knn);
         }
     }

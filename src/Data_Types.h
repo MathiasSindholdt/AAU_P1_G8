@@ -9,10 +9,12 @@ typedef struct  {
 typedef struct  {
     double grade;
     int Answer[14];
+    char requirelvl;
+    int requiregrade;
 }Choice_Vector;
 
 typedef struct  {
-    Subject subjects[4];
+    Subject subjects;
 }Requirements;
 
 
