@@ -60,8 +60,7 @@ Choice_Vector Read_User_Data(){
         printf("error opening user_data.csv"); // prints error if neccesary
         exit(EXIT_FAILURE); // exits the program
     }
-    fscanf(user_data,"%[^,],%f,",&usr_name,&grades);
-    printf("%s %f", usr_name, grades);
+
     for (int i=0; i<length_of_choices; i++) { // loop that goes through all the users answers
         fscanf(user_data,"%d,",&choices.Answer[i]); // scans the answer from the file and places it in an array
     }
