@@ -24,16 +24,15 @@ int KNN(Choice_Vector user_choices, Education* educations, int length) {
             sum += pow((edu_choice - usr_choice), 2); // adds (a_1 - b_1)^2 to a running sum
             }
         educations[j].knn = sqrt(sum); // assings the square root of the sum to the knn value in the education struct
-       printf("S%d\n", sum);
         sum = 0;
-        printf("%lf\n", educations[j].knn);
     }
     educations = edu_Sort(educations, length);
     return 0;
 }
 
-int display_results(Education *educations){
+int display_results(Education *educations, Choice_Vector Usr){
     for (int i = 0; i < 3; i++) {
+        if(Usr.)
         printf("%s | %s | %s | %f \n",educations[i].Name,educations[i].Info,educations[i].Location, educations[i].knn);
     }
    return 0;
