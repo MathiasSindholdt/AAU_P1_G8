@@ -7,6 +7,7 @@ typedef struct  {
 }Subject;
 
 typedef struct  {
+    double grade;
     int Answer[14];
 }Choice_Vector;
 
