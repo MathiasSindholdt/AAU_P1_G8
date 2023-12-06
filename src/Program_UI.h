@@ -1,13 +1,14 @@
+#include "Data_Types.h"
 void Clear_Screen();
 
-void inputGrades(struct GradeInput *grades);
+void inputGrades(GradeInput *grades);
 
 void askQuestion(const char *question, int *answer, int min, int max);
 
-void answerQuestionnaire(struct QuestionnaireAnswers *answers);
+void answerQuestionnaire(QuestionnaireAnswers *answers);
 
-void saveProfile(const char *fileName, const struct UserProfile *profiles, int numProfiles, int firstExit);
+void saveProfile(const char *fileName, UserProfile *profiles, int numProfiles, int firstExit);
 
-void loadProfiles(const char *fileName, struct UserProfile *profiles, int *numProfiles);
+void loadProfiles(const char *fileName, UserProfile *profiles, int *numProfiles);
 
-void displayProfiles(const struct UserProfile *profiles, int numProfiles);
+void displayProfiles(UserProfile *profiles, int numProfiles);

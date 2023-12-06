@@ -22,3 +22,32 @@ typedef struct{
   Requirements Requirements;
   char tags[30];
 }Education;
+
+typedef struct {
+    double grade;
+}GradeInput;
+
+typedef struct {
+    int locationPreference;
+    int creativeInterest;       
+    int technicalInterest;      
+    int teamworkPreference;     
+    int itInterest;             
+    int jobPriority;            
+    int salaryPriority;         
+    int independencePreference; 
+    int practicalExperienceValue;
+    int societyInterest;        
+    int scientificInterest;     
+    int careFulfillment;        
+    int mathFascination;        
+    int passedMathA;            
+    int languages;              
+    int businessEcon;           
+}QuestionnaireAnswers;
+
+typedef struct {
+    char name[50];
+    GradeInput grades;
+    QuestionnaireAnswers answers;
+}UserProfile;

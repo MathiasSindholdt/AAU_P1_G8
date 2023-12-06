@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct GradeInput {
+typedef struct {
     double grade;
-};
+}GradeInput;
 
-struct QuestionnaireAnswers {
+typedef struct {
     int locationPreference;     // Example: 1 for Aalborg, 2 for Aarhus, 3 for Copenhagen
     int creativeInterest;       // Humanistic and creative field
     int technicalInterest;      // Technical and scientific disciplines
@@ -23,16 +23,16 @@ struct QuestionnaireAnswers {
     int passedMathA;            // Yes (1) or No (0) for passing mathematics A
     int languages;              // Have interest in cultures and languages
     int businessEcon;           // Have interest in economics and business
-};
+}QuestionnaireAnswers;
 
-struct UserProfile {
+typedef struct {
     char name[50];
-    struct GradeInput grades;
-    struct QuestionnaireAnswers answers;
-};
+    GradeInput grades;
+    QuestionnaireAnswers answers;
+}UserProfile;
 
 // Function to input and edit grades
-void inputGrades(struct GradeInput *grades) {
+void inputGrades(GradeInput *grades) {
     printf("Enter your grade: ");
     scanf("%lf", &grades->grade);
 }
@@ -57,7 +57,7 @@ void askQuestion(const char *question, int *answer, int min, int max) {
     }
 }
 
-void answerQuestionnaire(struct QuestionnaireAnswers *answers) {
+void answerQuestionnaire(QuestionnaireAnswers *answers) {
     askQuestion("Have you passed mathematics A? (Yes: 1, No: 0): ", &answers->passedMathA, 0, 1);
 
     askQuestion("Select your preferred location (1: Aalborg, 2: Aarhus, 3: Copenhagen): ", &answers->locationPreference, 1, 3);
@@ -82,7 +82,7 @@ void answerQuestionnaire(struct QuestionnaireAnswers *answers) {
 
 
 // Function to save user profiles
-void saveProfile(const char *fileName, const struct UserProfile *profiles, int numProfiles, int firstExit) {
+void saveProfile(const char *fileName, UserProfile *profiles, int numProfiles, int firstExit) {
     FILE *file;
 
     if (firstExit) {
@@ -117,7 +117,7 @@ void saveProfile(const char *fileName, const struct UserProfile *profiles, int n
     }
 }
 
-void loadProfiles(const char *fileName, struct UserProfile *profiles, int *numProfiles) {
+void loadProfiles(const char *fileName, UserProfile *profiles, int *numProfiles) {
     FILE *file = fopen(fileName, "r");
     if (file != NULL) {
         fscanf(file, "%d", numProfiles);
@@ -147,7 +147,7 @@ void loadProfiles(const char *fileName, struct UserProfile *profiles, int *numPr
 }
 
 // Function to display user profiles
-void displayProfiles(const struct UserProfile *profiles, int numProfiles) {
+void displayProfiles(UserProfile *profiles, int numProfiles) {
     printf("\n----- User Profiles -----\n");
 
     // Prompt the user for a profile name
