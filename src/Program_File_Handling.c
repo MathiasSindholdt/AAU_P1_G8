@@ -85,19 +85,19 @@ Education Read_Education_File(int num){
         printf("error opening education%d.txt", num); // prints error if neccesary
         exit(EXIT_FAILURE); // exits the program
     }
-    fscanf(Education_file ," %[^,],", Ed.Name); // scans the name of the education and assigns it
+    fscanf(Education_file ,"{%[^}]},", Ed.Name); // scans the name of the education and assigns it
 
-    fscanf(Education_file, "%[^,],", Ed.Info); // scans general info and assigns it
+    fscanf(Education_file, "{%[^}]},", Ed.Info); // scans general info and assigns it
 
-    fscanf(Education_file, " %[^,],", Ed.Location); // scans the location of the education and assings it
+    fscanf(Education_file, "{%[^}]},", Ed.Location); // scans the location of the education and assings it
     for (int i = 0; i < length_of_choices; i++) { // loop that goes through all questions
         fscanf(Education_file, "%d,",&Ed.choice_vector.Answer[i]); // scans and asings the integer value of the answer
     }
-    fscanf(Education_file, " %d,", &Ed.requirement_bool); // scans integer value to check if the education has specific requirements
+    fscanf(Education_file, "%d,", &Ed.requirement_bool); // scans integer value to check if the education has specific requirements
     if (Ed.requirement_bool) { // checks if eduction has specific requirements
-        fscanf(Education_file, "%lf,", &Ed.Requirements.subjects[0].avg); // scans the required average and assigns it
+        fscanf(Education_file,"%lf,", &Ed.Requirements.subjects[0].avg); // scans the required average and assigns it
         for (int i = 0; i < 4; i++) { // goes though the number potential subject requirements
-            fscanf(Education_file, " %c, %d", &Ed.Requirements.subjects[i].level, &Ed.Requirements.subjects[i].grade); // scans the level and grade requirements and assigns them
+            fscanf(Education_file, "%c,%d", &Ed.Requirements.subjects[i].level, &Ed.Requirements.subjects[i].grade); // scans the level and grade requirements and assigns them
         }
     }
     fscanf(Education_file, "%[^~]",Ed.tags); // scans the education's tags
