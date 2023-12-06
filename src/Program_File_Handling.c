@@ -21,37 +21,12 @@ int Save_User_Choices(Choice_Vector choices){
 * Saves the users grades into the file "user_grades.csv"
 * @Param array of subjects
 */
-int Save_User_Grades(Subject subjects[10]){
-    FILE* user_grades = fopen("user_grades.csv","w"); // opens the file "user_grades.csv" in write mode
-    fprintf(user_grades,"(%lf),",subjects[0].avg); // prints the users average into the file
-    for (int i=0; i<length_of_choices; i++) { // for loop that goes though all elements of the array
-        fprintf(user_grades,"(%c,%d),",subjects[i].level,subjects[i].grade); // prints the users subject level and grade into the file
-    }
-    fclose(user_grades); // closes the file
-    return 0;
-}
-/*
-* reads the users grades from a file named user_grades.csv
-*/
-Subject* Read_User_Grades(){
-    Subject subjects[10];
-    FILE* user_grades =fopen("user_grades.csv","r"); // opens the file user_grades.csv in read mode
-    if (user_grades==NULL) { //checks if file was opened succesfully
-        printf("error opening user_grades.csv"); // prints error if neccesary
-        exit(EXIT_FAILURE); // exits the program
-    }
-    fscanf(user_grades,"(%lf),",&subjects[0].avg); // scans the users average from the file
-    for (int i=0; i<10; i++) { // for loop that goes though all the users grades
-        fscanf(user_grades,"(%c,%d),", &subjects[i].level, &subjects[i].grade); // scans the users subject level and grade
-    }
-    fclose(user_grades); // closes the file
-    return subjects;
-}
+
 /*
 * reads the users data, i.e. the users choice profile, from the file user_data.csv
 */
 Choice_Vector Read_User_Data(){
-    length_of_choices = 14;
+    length_of_choices = 15;
     char usr_name[30];
     double grades;
 
@@ -64,6 +39,7 @@ Choice_Vector Read_User_Data(){
     fscanf(user_data,"%lf,",&grades);
     for (int i=0; i<length_of_choices; i++) { // loop that goes through all the users answers
         fscanf(user_data,"%d,",&choices.Answer[i]); // scans the answer from the file and places it in an array
+        printf("%d\n",choices.Answer[i]);
     }
     fscanf(user_data,"%c,%d", &choices.requirelvl, &choices.requiregrade);
     fclose(user_data); // closes the file
@@ -98,8 +74,8 @@ Education Read_Education_File(int num){
     }
     fscanf(Education_file, "%d,", &Ed.requirement_bool); // scans integer value to check if the education has specific requirements
     if (Ed.requirement_bool) { // checks if eduction has specific requirements
-        fscanf(Education_file,"%lf,", &Ed.Requirements.subjects.avg); // scans the required average and assigns it
-        fscanf(Education_file, "%c,%d", &Ed.Requirements.subjects.level, &Ed.Requirements.subjects.grade); // scans the level and grade requirements and assigns them
+        fscanf(Education_file,"%lf,", &Ed.Requirements.avg); // scans the required average and assigns it
+        fscanf(Education_file, "%c,%d", &Ed.Requirements.level, &Ed.Requirements.grade); // scans the level and grade requirements and assigns them
     }
     fscanf(Education_file, "%[^~]",Ed.tags); // scans the education's tags
     fclose(Education_file); // closes the file

@@ -17,4 +17,5 @@ int main() {
     //display_results(ed, usr);
     KNN(usr, ed, sizeof(ed)/sizeof(ed[0]));
     display_results(ed, usr);
+
 }
