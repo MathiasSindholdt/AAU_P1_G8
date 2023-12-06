@@ -13,7 +13,7 @@ int main() {
 	for (int i=0; i<4; i++) {
         ed[i] = Read_Education_File(i);
     }
-    Choice_Vector usr = {1,2,3,4,5,6,7,8,9,0,1,2,3,4};
+    Choice_Vector usr = Read_User_Data();
     display_results(ed);
     KNN(usr, ed, sizeof(ed)/sizeof(ed[0]));
     display_results(ed);

@@ -51,8 +51,11 @@ Subject* Read_User_Grades(){
 * reads the users data, i.e. the users choice profile, from the file user_data.csv
 */
 Choice_Vector Read_User_Data(){
+    length_of_choices = 14;
+    char usr_name[30];
+    float grades;
     Choice_Vector choices;
-    FILE* user_data =fopen("user_data.csv","r"); // opens the file user_data.csv in read mode
+    FILE* user_data =fopen("usr_example.txt","r"); // opens the file user_data.csv in read mode
     if (user_data==NULL) { // checks if the file was opened succesfully
         printf("error opening user_data.csv"); // prints error if neccesary
         exit(EXIT_FAILURE); // exits the program
@@ -80,22 +83,23 @@ Education Read_Education_File(int num){
         printf("error opening education%d.txt", num); // prints error if neccesary
         exit(EXIT_FAILURE); // exits the program
     }
-    fscanf(Education_file ," %[^,],", Ed.Name); // scans the name of the education and assigns it
+    fscanf(Education_file ,"~%[^~]~,", Ed.Name); // scans the name of the education and assigns it
 
-    fscanf(Education_file, "%[^,],", Ed.Info); // scans general info and assigns it
+    fscanf(Education_file, "~%[^~]~,", Ed.Info); // scans general info and assigns it
 
-    fscanf(Education_file, " %[^,],", Ed.Location); // scans the location of the education and assings it
+    fscanf(Education_file, "~%[^~]~,", Ed.Location); // scans the location of the education and assings it
     for (int i = 0; i < length_of_choices; i++) { // loop that goes through all questions
         fscanf(Education_file, "%d,",&Ed.choice_vector.Answer[i]); // scans and asings the integer value of the answer
+        printf("%d\n", Ed.choice_vector.Answer[i]);
     }
-    fscanf(Education_file, " %d,", &Ed.requirement_bool); // scans integer value to check if the education has specific requirements
+    fscanf(Education_file, "%d,", &Ed.requirement_bool); // scans integer value to check if the education has specific requirements
     if (Ed.requirement_bool) { // checks if eduction has specific requirements
         fscanf(Education_file, "%lf,", &Ed.Requirements.subjects[0].avg); // scans the required average and assigns it
         for (int i = 0; i < 4; i++) { // goes though the number potential subject requirements
-            fscanf(Education_file, " %c, %d", &Ed.Requirements.subjects[i].level, &Ed.Requirements.subjects[i].grade); // scans the level and grade requirements and assigns them
+            fscanf(Education_file, "%c,%d", &Ed.Requirements.subjects[i].level, &Ed.Requirements.subjects[i].grade); // scans the level and grade requirements and assigns them
         }
     }
-    fscanf(Education_file, "%[^~]",Ed.tags); // scans the education's tags
+    fscanf(Education_file, "~%[^~]~,",Ed.tags); // scans the education's tags
     fclose(Education_file); // closes the file
     return Ed;
 }
@@ -117,7 +121,7 @@ char* Read_Question(int Q_num){
         exit(EXIT_FAILURE); // exits the program
     }
     char * bigger_buf = malloc(sizeof(char) * 300);
-    fscanf(Question,"%[^~]",bigger_buf); // scans question into buffer
+    fscanf(Question,"~%[^~]~,",bigger_buf); // scans question into buffer
     char * final_Question = malloc(sizeof(bigger_buf)/sizeof(bigger_buf[0])); // creates array the size of the question
     final_Question = bigger_buf;
 

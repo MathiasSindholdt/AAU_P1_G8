@@ -24,7 +24,9 @@ int KNN(Choice_Vector user_choices, Education* educations, int length) {
             sum += pow((edu_choice - usr_choice), 2); // adds (a_1 - b_1)^2 to a running sum
             }
         educations[j].knn = sqrt(sum); // assings the square root of the sum to the knn value in the education struct
+       printf("S%d\n", sum);
         sum = 0;
+        printf("%lf\n", educations[j].knn);
     }
     educations = edu_Sort(educations, length);
     return 0;
@@ -50,7 +52,7 @@ Education* edu_Sort(Education *arr, int length)
     int i = 0 , j = 0;
     Education tmp;
 
-    printf("\n%d\n",length);
+    
     do
     {
         for(j = 0; j < length; j++){
