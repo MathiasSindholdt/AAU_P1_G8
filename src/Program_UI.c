@@ -82,38 +82,22 @@ void answerQuestionnaire(QuestionnaireAnswers *answers) {
 
 
 // Function to save user profiles
-void saveProfile(const char *fileName, UserProfile *profiles, int numProfiles, int firstExit) {
-    FILE *file;
+void saveProfile(const char *fileName, UserProfile *profiles) {
+    FILE *file = fopen("profiles.txt", "w");
 
-    if (firstExit) {
-        file = fopen(fileName, "w");  // Use "w" to overwrite the file
-    } else {
-        file = fopen(fileName, "a");  // Use "a" to append to the file
-    }
     if (file != NULL) {
-        fprintf(file, "%d\n", numProfiles);
-
-        for (int i = 0; i < numProfiles; i++) {
-            fprintf(file, "%s\n", profiles[i].name);
-            fprintf(file, "%.2f\n", profiles[i].grades.grade);
-            fprintf(file, "%d\n", profiles[i].answers.passedMathA);
-            fprintf(file, "%d\n", profiles[i].answers.creativeInterest);
-            fprintf(file, "%d\n", profiles[i].answers.locationPreference);
-            fprintf(file, "%d\n", profiles[i].answers.technicalInterest);
-            fprintf(file, "%d\n", profiles[i].answers.teamworkPreference);
-            fprintf(file, "%d\n", profiles[i].answers.itInterest);
-            fprintf(file, "%d\n", profiles[i].answers.independencePreference);
-            fprintf(file, "%d\n", profiles[i].answers.practicalExperienceValue);
-            fprintf(file, "%d\n", profiles[i].answers.societyInterest);
-            fprintf(file, "%d\n", profiles[i].answers.scientificInterest);
-            fprintf(file, "%d\n", profiles[i].answers.businessEcon);
-            fprintf(file, "%d\n", profiles[i].answers.mathFascination);
-            fprintf(file, "%d\n", profiles[i].answers.careFulfillment);
-            fprintf(file, "%d\n", profiles[i].answers.languages);
-            fprintf(file, "%d\n", profiles[i].answers.jobPriority);
-            fprintf(file, "%d\n", profiles[i].answers.salaryPriority);
-        }
+        fprintf(file, "%.2lf, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d~",
+                profiles->grades.grade, profiles->answers.passedMathA,
+                profiles->answers.locationPreference, profiles->answers.creativeInterest,
+                profiles->answers.technicalInterest, profiles->answers.teamworkPreference,
+                profiles->answers.itInterest, profiles->answers.independencePreference, profiles->answers.practicalExperienceValue,
+                profiles->answers.societyInterest, profiles->answers.scientificInterest, profiles->answers.businessEcon,
+                profiles->answers.mathFascination, profiles->answers.careFulfillment, profiles->answers.languages,
+                profiles->answers.jobPriority, profiles->answers.salaryPriority);
         fclose(file);
+        printf("Profile has been saved.\n");
+    } else {
+        printf("Error: Unable to save profile.\n");
     }
 }
 
@@ -123,68 +107,17 @@ void loadProfiles(const char *fileName, UserProfile *profiles, int *numProfiles)
         fscanf(file, "%d", numProfiles);
 
         for (int i = 0; i < *numProfiles && i < 25; i++) {
-            fscanf(file, "%s", profiles[i].name);
-            fscanf(file, "%f", &profiles[i].grades.grade);
-            fscanf(file, "%d", &profiles[i].answers.passedMathA);
-            fscanf(file, "%d", &profiles[i].answers.locationPreference);
-            fscanf(file, "%d", &profiles[i].answers.creativeInterest);
-            fscanf(file, "%d", &profiles[i].answers.technicalInterest);
-            fscanf(file, "%d", &profiles[i].answers.teamworkPreference);
-            fscanf(file, "%d", &profiles[i].answers.itInterest);
-            fscanf(file, "%d", &profiles[i].answers.independencePreference);
-            fscanf(file, "%d", &profiles[i].answers.practicalExperienceValue);
-            fscanf(file, "%d", &profiles[i].answers.societyInterest);
-            fscanf(file, "%d", &profiles[i].answers.scientificInterest);
-            fscanf(file, "%d", &profiles[i].answers.businessEcon);
-            fscanf(file, "%d", &profiles[i].answers.mathFascination);
-            fscanf(file, "%d", &profiles[i].answers.careFulfillment);
-            fscanf(file, "%d", &profiles[i].answers.languages);
-            fscanf(file, "%d", &profiles[i].answers.jobPriority);
-            fscanf(file, "%d", &profiles[i].answers.salaryPriority);
+            fscanf(file, "%lf, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d",
+                   &profiles[i].grades.grade, &profiles[i].answers.passedMathA,
+                   &profiles[i].answers.locationPreference, &profiles[i].answers.creativeInterest,
+                   &profiles[i].answers.technicalInterest, &profiles[i].answers.teamworkPreference,
+                   &profiles[i].answers.itInterest, &profiles[i].answers.jobPriority,
+                   &profiles[i].answers.salaryPriority, &profiles[i].answers.independencePreference,
+                   &profiles[i].answers.practicalExperienceValue, &profiles[i].answers.societyInterest,
+                   &profiles[i].answers.scientificInterest, &profiles[i].answers.businessEcon,
+                   &profiles[i].answers.mathFascination, &profiles[i].answers.careFulfillment,
+                   &profiles[i].answers.languages);
         }
         fclose(file);
-    }
-}
-
-// Function to display user profiles
-void displayProfiles(UserProfile *profiles, int numProfiles) {
-    printf("\n----- User Profiles -----\n");
-
-    // Prompt the user for a profile name
-    char searchName[50];
-    printf("Enter the name of the profile to display: ");
-    scanf("%s", searchName);
-
-    int found = 0;
-
-    for (int i = 0; i < numProfiles; i++) {
-        if (strcmp(profiles[i].name, searchName) == 0) {
-            printf("Profile Name: %s\n", profiles[i].name);
-            printf("Grade: %.2f\n", profiles[i].grades.grade);
-
-            printf("Passed Mathematics A: %s\n", profiles[i].answers.passedMathA ? "Yes" : "No");
-            printf("Location Preference: %d\n", profiles[i].answers.locationPreference);
-            printf("Creative Interest: %d\n", profiles[i].answers.creativeInterest);
-            printf("Technical Interest: %d\n", profiles[i].answers.technicalInterest);
-            printf("Teamwork Preference: %d\n", profiles[i].answers.teamworkPreference);
-            printf("IT Interest: %d\n", profiles[i].answers.itInterest);
-            printf("Job Priority: %d\n", profiles[i].answers.jobPriority);
-            printf("Salary Priority: %d\n", profiles[i].answers.salaryPriority);
-            printf("Independence Preference: %d\n", profiles[i].answers.independencePreference);
-            printf("Practical Experience Value: %d\n", profiles[i].answers.practicalExperienceValue);
-            printf("Society Interest: %d\n", profiles[i].answers.societyInterest);
-            printf("Scientific Interest: %d\n", profiles[i].answers.scientificInterest);
-            printf("Care Fulfillment: %d\n", profiles[i].answers.careFulfillment);
-            printf("Economics and Business: %d\n", profiles[i].answers.businessEcon);
-            printf("Care Fulfillment: %d\n", profiles[i].answers.languages);
-            printf("Math Fascination: %d\n", profiles[i].answers.mathFascination);
-            printf("\n");
-
-            found = 1;
-            break;  // Stop searching once the profile is found
-        }
-    }
-    if (!found) {
-        printf("Profile not found.\n");
     }
 }

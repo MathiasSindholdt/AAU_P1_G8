@@ -11,7 +11,6 @@ Choice_Vector User_Choices;
 int main() { 
 	UserProfile profiles[25];
     int numProfiles = 0;
-    int firstExit = 1;
 
     loadProfiles("profiles.txt", profiles, &numProfiles);
 
@@ -20,8 +19,7 @@ int main() {
         printf("\n1. Input/Edit Grades\n");
         printf("2. Answer Questionnaire\n");
         printf("3. Save Profile\n");
-        printf("4. Display Profiles\n");
-        printf("5. Exit\n");
+        printf("4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -33,22 +31,15 @@ int main() {
                 answerQuestionnaire(&profiles[numProfiles].answers);
                 break;
             case 3:
-                printf("Enter a name for the profile: ");
-                scanf("%s", profiles[numProfiles].name);
+                saveProfile("profiles.txt", &profiles[numProfiles]);
                 numProfiles++;
                 break;
             case 4:
-                displayProfiles(profiles, numProfiles);
-                break;
-            case 5:
                 printf("Exiting program.\n");
                 break;
             default:
                 printf("Invalid input. Please enter a valid integer.\n");
                 while (getchar() != '\n');
         }
-    } while (choice != 5);
-
-    saveProfile("profiles.txt", profiles, numProfiles, firstExit);
-    firstExit = 0;
+    } while (choice != 4);
 }
