@@ -32,8 +32,9 @@ int KNN(Choice_Vector user_choices, Education* educations, int length) {
 
 int display_results(Education *educations, Choice_Vector Usr){
     for (int i = 0; i < 3; i++) {
-        if(Usr.)
+        if(Usr.grade > educations[i].Requirements.subjects[0].avg){
         printf("%s | %s | %s | %f \n",educations[i].Name,educations[i].Info,educations[i].Location, educations[i].knn);
+        }
     }
    return 0;
 }

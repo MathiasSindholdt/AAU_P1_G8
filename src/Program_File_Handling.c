@@ -53,18 +53,21 @@ Subject* Read_User_Grades(){
 Choice_Vector Read_User_Data(){
     length_of_choices = 14;
     char usr_name[30];
-    float grades;
+    double grades;
+
     Choice_Vector choices;
     FILE* user_data =fopen("usr_example.txt","r"); // opens the file user_data.csv in read mode
     if (user_data==NULL) { // checks if the file was opened succesfully
         printf("error opening user_data.csv"); // prints error if neccesary
         exit(EXIT_FAILURE); // exits the program
     }
-
+    fscanf(user_data,"%lf,",&grades);
     for (int i=0; i<length_of_choices; i++) { // loop that goes through all the users answers
         fscanf(user_data,"%d,",&choices.Answer[i]); // scans the answer from the file and places it in an array
     }
     fclose(user_data); // closes the file
+    choices.grade = grades;
+
     return choices;
 }
 /*
