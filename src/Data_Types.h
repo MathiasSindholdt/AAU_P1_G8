@@ -4,8 +4,8 @@
 typedef struct  {
     double grade;
     int Answer[15];
-    char requirelvl;
-    int requiregrade;
+    char slvl;
+    int sgrade;
 }Choice_Vector;
 
 typedef struct  {
