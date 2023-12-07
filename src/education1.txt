@@ -1,1 +1,1 @@
- Navn paa uddanelse1,Kort Info,Lokation,420,420,420,420,420,420,420,420,420,420,420,420,420,420,0,Dansk~
+{Navn paa uddanelse1},{Kort Info},{Lokation},420,420,420,420,420,420,420,420,420,420,420,420,420,420,1,7.1,A,0,Dansk~
