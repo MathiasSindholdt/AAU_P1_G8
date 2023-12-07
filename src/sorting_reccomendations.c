@@ -30,14 +30,15 @@ int KNN(Choice_Vector user_choices, Education* educations, int length) {
     return 0;
 }
 
-int display_results(Education *educations){
+int display_results(Education *educations, Choice_Vector Usr){
     for (int i = 0; i < 3; i++) {
-        printf("%s | %s | %s | %f \n",educations[i].Name,educations[i].Info,educations[i].Location, educations[i].knn);
+        printf("%lf,%d,%c \n", educations[i].Requirements.avg, Usr.requiregrade, Usr.requirelvl);
+        if(Usr.grade > educations[i].Requirements.avg && Usr.requirelvl == educations[i].Requirements.level){
+        printf("%s | %s | %s | %lf \n",educations[i].Name,educations[i].Info,educations[i].Location, educations[i].knn);
+        }
     }
    return 0;
 }
-
-//Make length dynamic
 
 /*
 ** This function sorts the recommendations based on thier knn value
@@ -45,12 +46,12 @@ int display_results(Education *educations){
 */
 Education* edu_Sort(Education *arr, int length)
 {
-    Education *temp = malloc(sizeof(arr)/sizeof(arr[0]));
+    Education *temp = malloc(length * sizeof(Education));
     temp = arr;
     int i = 0 , j = 0;
     Education tmp;
 
-    printf("\n%d\n",length);
+    
     do
     {
         for(j = 0; j < length; j++){

@@ -1,1 +1,1 @@
-Navn paa uddanelse3,Kort Info,Lokation,75,75,75,75,75,75,75,75,75,75,75,75,75,75,0,Fysik~
+{Navn paa uddanelse3},{Kort Info},{Lokation},75,75,75,75,75,75,75,75,75,75,75,75,75,75,1,6.8,A,0,Fysik~
