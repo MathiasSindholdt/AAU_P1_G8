@@ -26,4 +26,7 @@ int main() {
 
     KNN(usr, ed, sizeof(ed)/sizeof(ed[0]));
     display_results(ed, usr);
+    LongEducation LED = Read_Long_Education_File(1);
+    display_Long_edu(LED);
+
 }

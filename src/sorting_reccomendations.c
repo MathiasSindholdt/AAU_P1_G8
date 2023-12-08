@@ -41,6 +41,10 @@ int display_results(Education *educations, Choice_Vector Usr){
    return 0;
 }
 
+void display_Long_edu(LongEducation LongEd){
+    printf("%s | %s \n %s \n %s \n",LongEd.LName, LongEd.LLoc, LongEd.LInfo, LongEd.Link);
+}
+
 /*
 ** This function sorts the recommendations based on thier knn value
 ** @Param education array is the array which needs to be sorted
