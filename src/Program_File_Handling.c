@@ -2,11 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Data_Types.h"
-int length_of_choices = 14; // defines  a default value for the amount of choices the player has i.e. the number of questions
+int length_of_choices = 15; // defines  a default value for the amount of choices the player has i.e. the number of questions
 
 /*
  * Saves the users choice profile to a file named "user_data.csv"
  * @Param choice vector
+ * @Results int code
  */
 int Save_User_Choices(Choice_Vector choices){
     int length_of_choices = sizeof(choices.Answer)/sizeof(choices.Answer[0]); // creates an int of the lenght of the array
@@ -17,17 +18,13 @@ int Save_User_Choices(Choice_Vector choices){
     fclose(user_data); // closes the file
     return 0;
 }
-/*
-* Saves the users grades into the file "user_grades.csv"
-* @Param array of subjects
-*/
 
 /*
 * reads the users data, i.e. the users choice profile, from the file user_data.csv
+* @Returns Choice vector
 */
 Choice_Vector Read_User_Data(){
     length_of_choices = 15;
-    char usr_name[30];
     double grades;
 
     Choice_Vector choices;
@@ -39,9 +36,9 @@ Choice_Vector Read_User_Data(){
     fscanf(user_data,"%lf,",&grades);
     for (int i=0; i<length_of_choices; i++) { // loop that goes through all the users answers
         fscanf(user_data,"%d,",&choices.Answer[i]); // scans the answer from the file and places it in an array
-        printf("%d\n",choices.Answer[i]);
+        //printf("%d\n",choices.Answer[i]);
     }
-    fscanf(user_data,"%c,%d", &choices.requirelvl, &choices.requiregrade);
+    fscanf(user_data,"%c,%d", &choices.slvl, &choices.sgrade);
     fclose(user_data); // closes the file
     choices.grade = grades;
 
