@@ -96,11 +96,14 @@ void answerQuestionnaire(Choice_Vector usr) {
             usr.slvl='A';
             break;
         case 0:
-            usr.slvl="B";
-            }
-    switch (expression) {
+            usr.slvl='B';
 
+            break;
+        default:
+            printf("kys");
             }
+    switch (usr.Answer[1]) {
+         }
 }
 
 
