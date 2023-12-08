@@ -20,6 +20,7 @@ int main() {
     KNN(User_Choices, ed, sizeof(ed)/sizeof(ed[0]));
 
     display_results(ed, User_Choices);
+
 	for (int i=0; i<4; i++) {
         ed[i] = Read_Education_File(i);
     }
