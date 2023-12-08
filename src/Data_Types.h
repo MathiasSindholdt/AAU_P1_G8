@@ -23,6 +23,7 @@ typedef struct{
   int requirement_bool;
   Requirements Requirements;
   double knn;
+  int ident;
 }Education;
 
 typedef struct{
