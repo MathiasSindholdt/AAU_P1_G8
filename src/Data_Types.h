@@ -3,7 +3,7 @@
 
 typedef struct  {
     double grade;
-    int Answer[15];
+    int Answer[16];
     char slvl;
     int sgrade;
 }Choice_Vector;

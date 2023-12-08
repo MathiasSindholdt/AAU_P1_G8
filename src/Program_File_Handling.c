@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Data_Types.h"
-int length_of_choices = 15; // defines  a default value for the amount of choices the player has i.e. the number of questions
+int length_of_choices = 16; // defines  a default value for the amount of choices the player has i.e. the number of questions
 
 /*
  * Saves the users choice profile to a file named "user_data.csv"
@@ -24,7 +24,7 @@ int Save_User_Choices(Choice_Vector choices){
 * @Returns Choice vector
 */
 Choice_Vector Read_User_Data(){
-    length_of_choices = 15;
+    length_of_choices = 16;
     double grades;
 
     Choice_Vector choices;

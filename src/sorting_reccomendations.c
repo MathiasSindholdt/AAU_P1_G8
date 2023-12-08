@@ -18,7 +18,7 @@ int KNN(Choice_Vector user_choices, Education* educations, int length) {
     int usr_choice;
 
     for (int j = 0; j < 4; j++) {
-        for (int i = 0; i < 14; i++) {
+        for (int i = 2; i < 16; i++) {
             edu_choice = educations[j].choice_vector.Answer[i]; // assigns answer from choice vector to edu_choice
             usr_choice =  user_choices.Answer[i]; // assigns user answer to usr_choice
             sum += pow((edu_choice - usr_choice), 2); // adds (a_1 - b_1)^2 to a running sum
