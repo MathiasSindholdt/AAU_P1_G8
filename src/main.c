@@ -27,4 +27,5 @@ int main() {
 
     KNN(usr, ed, sizeof(ed)/sizeof(ed[0]));
     display_results(ed, usr);
+    display_Long_edu(ed);
 }

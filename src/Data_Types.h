@@ -22,7 +22,15 @@ typedef struct{
   Choice_Vector choice_vector;
   int requirement_bool;
   Requirements Requirements;
-  char tags[30];
   double knn;
+  int ident;
 }Education;
+
+typedef struct{
+  char LName[70];
+  char LLoc[200];
+  char LInfo[3000];
+  char Link[100];
+}LongEducation;
+
 #endif
