@@ -11,7 +11,7 @@ int length_of_choices = 16; // defines  a default value for the amount of choice
  */
 int Save_User_Choices(Choice_Vector choices){
     int length_of_choices = sizeof(choices.Answer)/sizeof(choices.Answer[0]); // creates an int of the lenght of the array
-    FILE* user_data =fopen("user_data.csv","w"); // opens the file "user_data.csv" in write mode
+    FILE* user_data =fopen("data/usr/user_data.csv","w"); // opens the file "user_data.csv" in write mode
     for (int i=0; i<length_of_choices; i++) { // for loop that goes though all elements of the choice vector
         fprintf(user_data,"%d,",choices.Answer[i]); // prints the user choices into the file
     }
@@ -28,7 +28,7 @@ Choice_Vector Read_User_Data(){
     double grades;
 
     Choice_Vector choices;
-    FILE* user_data =fopen("usr_example.txt","r"); // opens the file user_data.csv in read mode
+    FILE* user_data =fopen("data/usr/usr_example.txt","r"); // opens the file user_data.csv in read mode
     if (user_data==NULL) { // checks if the file was opened succesfully
         printf("error opening user_data.csv"); // prints error if neccesary
         exit(EXIT_FAILURE); // exits the program
@@ -51,8 +51,8 @@ Choice_Vector Read_User_Data(){
  */
 Education Read_Education_File(int num){
     Education Ed;
-    char buf[20];
-    snprintf(buf, 20, "education%d.txt", num); // prints "education{some integer}.txt" to the buffer
+    char buf[35];
+    snprintf(buf, 20, "data/educations/education%d.txt", num); // prints "education{some integer}.txt" to the buffer
     char *file_name = malloc(sizeof(buf) /sizeof(buf[0])); // creates an array the size of the file name in the buffer
     file_name = buf;
 
@@ -81,8 +81,8 @@ Education Read_Education_File(int num){
 
 LongEducation Read_Long_Education_File(int num){
     LongEducation LongEd;
-    char buf[20];
-    snprintf(buf, 20, "LongEducation%d.txt", num); // prints "education{some integer}.txt" to the buffer
+    char buf[35];
+    snprintf(buf, 20, "data/longeducation/LongEducation%d.txt", num); // prints "education{some integer}.txt" to the buffer
     char *file_name = malloc(sizeof(buf) /sizeof(buf[0])); // creates an array the size of the file name in the buffer
     file_name = buf;
 
@@ -108,8 +108,8 @@ LongEducation Read_Long_Education_File(int num){
 ** @Param integer that identifies the question
  */
 char* Read_Question(int Q_num){
-    char buf[20];
-    snprintf(buf, 20, "question%d.txt", Q_num); // prints "question{some integer}.txt" to buffer
+    char buf[35];
+    snprintf(buf, 20, "data/questions/question%d.txt", Q_num); // prints "question{some integer}.txt" to buffer
     char *file_name = malloc(sizeof(buf) /sizeof(buf[0])); // creates array the size of the file name
     file_name = buf;
 
