@@ -56,9 +56,10 @@ void display_Long_edu(Education* educations){
             anw = educations[anw].ident;
             LongEd= Read_Long_Education_File(anw);
             printf("%s | %s \n %s \n %s \n",LongEd.LName, LongEd.LLoc, LongEd.LInfo, LongEd.Link);
-
         }else if (RecYN == 'n') {
             break;
+        }else if (RecYN != 'y' || 'n'){
+            printf("Anwser can only be yes or no");
         }
     }
 }
