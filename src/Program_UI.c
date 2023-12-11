@@ -44,7 +44,7 @@
 // Function to input and edit grades
 double inputGrades(double grades) {
   printf("Enter your grade: ");
-  scanf("%lf", &grades);
+  scanf("%lf", &grades); // note that if the user uses , this will only read the first part of the number i.e. only the x in x,y
   return grades;
 }
 
