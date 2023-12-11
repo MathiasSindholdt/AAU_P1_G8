@@ -9,13 +9,22 @@ Choice_Vector User_Choices;
 
 
 int main() {
+    Clear_Screen();
+    answerQuestionnaire(User_Choices);
     Education ed[4];
 	for (int i=0; i<4; i++) {
         ed[i] = Read_Education_File(i);
     }
     Choice_Vector usr = Read_User_Data();
     //display_results(ed, usr);
+    KNN(User_Choices, ed, sizeof(ed)/sizeof(ed[0]));
+
+    display_results(ed, User_Choices);
+	for (int i=0; i<4; i++) {
+        ed[i] = Read_Education_File(i);
+    }
+
     KNN(usr, ed, sizeof(ed)/sizeof(ed[0]));
     display_results(ed, usr);
-
+    display_Long_edu(ed);
 }

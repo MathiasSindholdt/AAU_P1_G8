@@ -3,6 +3,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "Program_File_Handling.h"
+
 // here knn will be implemented
 
 
@@ -18,7 +20,8 @@ int KNN(Choice_Vector user_choices, Education* educations, int length) {
     int usr_choice;
 
     for (int j = 0; j < 4; j++) {
-        for (int i = 0; i < 14; i++) {
+        educations[j].ident = j; // Gives an identifier for more info
+        for (int i = 2; i < 16; i++) {
             edu_choice = educations[j].choice_vector.Answer[i]; // assigns answer from choice vector to edu_choice
             usr_choice =  user_choices.Answer[i]; // assigns user answer to usr_choice
             sum += pow((edu_choice - usr_choice), 2); // adds (a_1 - b_1)^2 to a running sum
@@ -32,12 +35,32 @@ int KNN(Choice_Vector user_choices, Education* educations, int length) {
 
 int display_results(Education *educations, Choice_Vector Usr){
     for (int i = 0; i < 3; i++) {
-        printf("%lf,%d,%c \n", educations[i].Requirements.avg, Usr.requiregrade, Usr.requirelvl);
-        if(Usr.grade > educations[i].Requirements.avg && Usr.requirelvl == educations[i].Requirements.level){
+        if(Usr.grade > educations[i].Requirements.avg && (Usr.slvl == educations[i].Requirements.level || Usr.slvl == 'A') && Usr.sgrade >= educations[i].Requirements.grade){
         printf("%s | %s | %s | %lf \n",educations[i].Name,educations[i].Info,educations[i].Location, educations[i].knn);
         }
     }
    return 0;
+}
+
+// Needs to sanitize all user input with a switch statement.
+void display_Long_edu(Education* educations){
+    LongEducation LongEd;
+    while(1){
+        printf("Do you want more information on one of these recommendations? y/n \n");
+        char RecYN;
+        scanf(" %c", &RecYN);
+        if (RecYN == 'y'){
+            int anw = 0;
+            printf("Which one? \n");
+            scanf(" %d", &anw);
+            anw = educations[anw].ident;
+            LongEd= Read_Long_Education_File(anw);
+            printf("%s | %s \n %s \n %s \n",LongEd.LName, LongEd.LLoc, LongEd.LInfo, LongEd.Link);
+
+        }else if (RecYN == 'n') {
+            break;
+        }
+    }
 }
 
 /*

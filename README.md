@@ -10,6 +10,7 @@ name of education, choice vector, location, info, bool that show if there are re
 ## User Choice Vector
 
 ``` csv
+This has only been implemented with .txt
 choice_1,choice_2,...choice_n
 ```
 
