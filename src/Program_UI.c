@@ -2,9 +2,11 @@
 #include "Data_Types.h"
 #include "Program_File_Handling.h"
 #include "Program_UI.h"
+#include "sorting_reccomendations.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 /* typedef struct { */
 /*     double grade; */
 /* }GradeInput; */
@@ -44,7 +46,8 @@
 // Function to input and edit grades
 double inputGrades(double grades) {
   printf("Enter your grade: ");
-  scanf("%lf", &grades); // note that if the user uses , this will only read the first part of the number i.e. only the x in x,y
+  scanf("%lf", &grades); // note that if the user uses , this will only read the
+                         // first part of the number i.e. only the x in x,y
   return grades;
 }
 
@@ -190,3 +193,22 @@ Choice_Vector answerQuestionnaire(Choice_Vector usr) {
 /*         fclose(file); */
 /*     } */
 /* } */
+void full_list(int number_of_educations) {
+  while (1) {
+    Clear_Screen();
+    Education educations[number_of_educations];
+    for (int i = 0; i < number_of_educations; i++) {
+      educations[i] = Read_Education_File(i);
+    }
+
+    for (int i = 0; i < number_of_educations; i++) {
+      printf("%s | %s | %s %d \n", educations[i].Name, educations[i].Info,
+             educations[i].Location, i);
+    }
+
+    int code = display_Long_edu(educations);
+    if (code == 2) {
+      break;
+    }
+  }
+}
