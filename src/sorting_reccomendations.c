@@ -19,15 +19,13 @@ int KNN(Choice_Vector user_choices, Education *educations, int length) {
   int edu_choice;
   int usr_choice;
 
-  for (int j = 1; j < 76; j++) {
-    educations[j].ident = j; // Gives an identifier for more info
+  for (int j = 0; j < 75; j++) {
+    educations[j+1].ident = j; // Gives an identifier for more info
     for (int i = 2; i < 16; i++) {
-      edu_choice =
-          educations[j].choice_vector.Answer[i]; // assigns answer from choice
+      edu_choice = educations[j].choice_vector.Answer[i]; // assigns answer from choice
                                                  // vector to edu_choice
       usr_choice = user_choices.Answer[i]; // assigns user answer to usr_choice
-      sum += pow((edu_choice - usr_choice),
-                 2); // adds (a_1 - b_1)^2 to a running sum
+      sum += pow((edu_choice - usr_choice), 2); // adds (a_1 - b_1)^2 to a running sum
     }
     educations[j].knn = sqrt(sum); // assings the square root of the sum to the
                                    // knn value in the education struct
