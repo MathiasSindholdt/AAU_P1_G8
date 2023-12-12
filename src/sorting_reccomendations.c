@@ -21,7 +21,7 @@ int KNN(Choice_Vector user_choices, Education *educations, int length) {
 
   for (int j = 0; j < 75; j++) {
     educations[j+1].ident = j; // Gives an identifier for more info
-    for (int i = 2; i < 16; i++) {
+    for (int i = 1; i < 16; i++) {
       edu_choice = educations[j].choice_vector.Answer[i]; // assigns answer from choice
                                                  // vector to edu_choice
       usr_choice = user_choices.Answer[i]; // assigns user answer to usr_choice
