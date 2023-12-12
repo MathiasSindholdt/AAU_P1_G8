@@ -197,13 +197,13 @@ void full_list(int number_of_educations) {
   while (1) {
     Clear_Screen();
     Education educations[number_of_educations];
-    for (int i = 0; i < number_of_educations; i++) {
-      educations[i] = Read_Education_File(i);
+    for (int i = 1; i < number_of_educations; i++) {
+      educations[i] = Read_Education_File(i-1);
     }
 
-    for (int i = 0; i < number_of_educations; i++) {
-      printf("%s | %s | %s %d \n", educations[i].Name, educations[i].Info,
-             educations[i].Location, i);
+    for (int i = 1; i < number_of_educations; i++) {
+      printf("%s | %s | %s \n", educations[i].Name, educations[i].Info,
+             educations[i].Location);
     }
 
     int code = display_Long_edu(educations);

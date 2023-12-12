@@ -19,7 +19,7 @@ int KNN(Choice_Vector user_choices, Education *educations, int length) {
   int edu_choice;
   int usr_choice;
 
-  for (int j = 0; j < 75; j++) {
+  for (int j = 1; j < 76; j++) {
     educations[j].ident = j; // Gives an identifier for more info
     for (int i = 2; i < 16; i++) {
       edu_choice =
@@ -38,12 +38,12 @@ int KNN(Choice_Vector user_choices, Education *educations, int length) {
 }
 
 int display_results(Education *educations, Choice_Vector Usr) {
-  for (int i = 0; i < 3; i++) {
+  for (int i = 1; i < 4; i++) {
     if (Usr.grade > educations[i].Requirements.avg &&
         (Usr.slvl == educations[i].Requirements.level || Usr.slvl == 'A') &&
         Usr.sgrade >= educations[i].Requirements.grade) {
-      printf("%s | %s | %s | %lf \n", educations[i].Name, educations[i].Info,
-             educations[i].Location, educations[i].knn);
+      printf("%d | %s | %s | %s | %d \n", educations[i].ident, educations[i].Name, educations[i].Info,
+             educations[i].Location, i);
     }
   }
   return 0;
@@ -54,15 +54,16 @@ int display_Long_edu(Education *educations) {
   LongEducation LongEd;
   // while (1) {
 
-  printf(
-      "Do you want more information on one of these recommendations? y/n \n");
+  printf("Do you want more information on one of these recommendations? y/n \n");
   char RecYN;
   scanf(" %c", &RecYN);
   if (RecYN == 'y') {
-    Clear_Screen();
+    //Clear_Screen();
     int anw = 0;
     printf("Which one? \n");
     scanf(" %d", &anw);
+    //anw -=1;
+    printf("%d",anw);
     anw = educations[anw].ident;
     LongEd = Read_Long_Education_File(anw);
     printf("%s | %s \n %s \n %s \n", LongEd.LName, LongEd.LLoc, LongEd.LInfo,
@@ -74,22 +75,19 @@ int display_Long_edu(Education *educations) {
     scanf(" %c", &choice);
     switch (choice) {
     case '1':
-      return 0;
-      break;
+      return 1;
     case '2':
       return 2;
-      break;
     case 'q':
       exit(0);
-      break;
-    default:
-      // printf("Invalid input");
     }
   } else if (RecYN == 'n') {
-    exit(0);
-  }
+    return 2;
+  }else {
+    printf("invalid input\n");
+      }
   //}
-  return 0;
+
 }
 
 /*
