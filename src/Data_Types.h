@@ -30,7 +30,7 @@ typedef struct{
   char LName[70];
   char LLoc[200];
   char LInfo[3000];
-  char Link[100];
+  char Link[600];
 }LongEducation;
 
 #endif

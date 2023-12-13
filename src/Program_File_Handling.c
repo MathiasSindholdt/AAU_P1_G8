@@ -142,7 +142,7 @@ LongEducation Read_Long_Education_File(int num) {
          LongEd.Link); // scans the location of the education and assings it
 
   fclose(Long_Education_file); // closes the file
-
+  printf("hund");
   return LongEd;
 }
 
