@@ -47,7 +47,10 @@ int display_results(Education *educations, Choice_Vector Usr) {
   return 0;
 }
 
-// Needs to sanitize all user input with a switch statement.
+/*
+** this function displays a long education
+**@Param Education array that contains all educations which are used to identifiy which long education file to open
+*/
 int display_Long_edu(Education *educations) {
   LongEducation LongEd;
   // while (1) {
