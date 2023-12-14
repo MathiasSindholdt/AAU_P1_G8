@@ -19,8 +19,8 @@ int KNN(Choice_Vector user_choices, Education *educations, int length) {
   int edu_choice;
   int usr_choice;
 
-  for (int j = 0; j < 75; j++) {
-    educations[j+1].ident = j; // Gives an identifier for more info
+  for (int j = 1; j < length; j++) {
+    educations[j].ident = j; // Gives an identifier for more info
     for (int i = 1; i < 16; i++) {
       edu_choice = educations[j].choice_vector.Answer[i]; // assigns answer from choice
                                                  // vector to edu_choice
@@ -61,7 +61,6 @@ int display_Long_edu(Education *educations) {
     printf("Which one? \n");
     scanf(" %d", &anw);
     //anw -=1;
-    printf("%d",anw);
     anw = educations[anw].ident;
     LongEd = Read_Long_Education_File(anw);
     printf("%s | %s \n %s \n %s \n", LongEd.LName, LongEd.LLoc, LongEd.LInfo,

@@ -115,34 +115,19 @@ LongEducation Read_Long_Education_File(int num) {
   char buf[50];
   snprintf(buf, 50, "data/longeducations/LongEducation%d.txt",
            num); // prints "education{some integer}.txt" to the buffer
-  printf("%s", buf);
-  char *file_name = malloc(
-      sizeof(buf) /
-      sizeof(
-          buf[0])); // creates an array the size of the file name in the buffer
+  char *file_name = malloc(sizeof(buf) / sizeof(buf[0])); // creates an array the size of the file name in the buffer
   file_name = buf;
 
-  FILE *Long_Education_file =
-      fopen(file_name, "r");         // opens the file in read mode
+  FILE *Long_Education_file =fopen(file_name, "r");         // opens the file in read mode
   if (Long_Education_file == NULL) { // checks if file was opened succesfully
-    printf("error opening long education%d.txt",
-           num);        // prints error if neccesary
+    printf("error opening long education%d.txt",num);        // prints error if neccesary
     exit(EXIT_FAILURE); // exits the program
   }
-  fscanf(Long_Education_file, "{%[^}]},",
-         LongEd.LName); // scans the name of the education and assigns it
-
-  fscanf(Long_Education_file, "{%[^}]},",
-         LongEd.LLoc); // scans general info and assigns it
-
-  fscanf(Long_Education_file, "{%[^}]},",
-         LongEd.LInfo); // scans the location of the education and assings it
-
-  fscanf(Long_Education_file, "{%[^}]},",
-         LongEd.Link); // scans the location of the education and assings it
-
+  fscanf(Long_Education_file, "{%[^}]},",LongEd.LName); // scans the name of the education and assigns it
+  fscanf(Long_Education_file, "{%[^}]},",LongEd.LLoc); // scans general info and assigns it
+  fscanf(Long_Education_file, "{%[^}]},",LongEd.LInfo); // scans the location of the education and assings it
+  fscanf(Long_Education_file, "{%[^}]},",LongEd.Link); // scans the location of the education and assings it
   fclose(Long_Education_file); // closes the file
-  printf("hund");
   return LongEd;
 }
 
