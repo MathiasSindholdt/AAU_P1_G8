@@ -139,7 +139,7 @@ Choice_Vector Questionnaire(Choice_Vector usr) {
     Clear_Screen();
     printf("what grade did you get in mathematics\n");
     scanf("%d", &usr.sgrade);
-  } else if (usr.Answer[0] == 1) {
+  } else if (usr.Answer[0] == 0) {
     usr.slvl = 'B';
     Clear_Screen();
     printf("what grade did you get in mathematics");
