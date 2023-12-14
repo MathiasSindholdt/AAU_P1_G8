@@ -58,7 +58,6 @@ int main() {
       Clear_Screen();
       display_results(ed, User_Choices);
       if (display_Long_edu(ed) == 1) {
-        // display_results(ed, User_Choices);
       } else {
         bool = 0;
       }

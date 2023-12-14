@@ -1,7 +1,6 @@
 #include "sorting_reccomendations.h"
 #include "Data_Types.h"
 #include "Program_File_Handling.h"
-#include "Program_UI.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,8 +26,7 @@ int KNN(Choice_Vector user_choices, Education *educations, int length) {
       usr_choice = user_choices.Answer[i]; // assigns user answer to usr_choice
       sum += pow((edu_choice - usr_choice), 2); // adds (a_1 - b_1)^2 to a running sum
     }
-    educations[j].knn = sqrt(sum); // assings the square root of the sum to the
-                                   // knn value in the education struct
+    educations[j].knn = sqrt(sum); // assings the square root of the sum to the knn value in the education struct
     sum = 0;
   }
   educations = edu_Sort(educations, length);
@@ -53,17 +51,14 @@ int display_results(Education *educations, Choice_Vector Usr) {
 */
 int display_Long_edu(Education *educations) {
   LongEducation LongEd;
-  // while (1) {
 
   printf("Do you want more information on one of these recommendations? y/n \n");
   char RecYN;
   scanf(" %c", &RecYN);
   if (RecYN == 'y') {
-    //Clear_Screen();
     int anw = 0;
     printf("Which one? \n");
     scanf(" %d", &anw);
-    //anw -=1;
     anw = educations[anw].ident;
     LongEd = Read_Long_Education_File(anw);
     printf("%s | %s \n %s \n %s \n", LongEd.LName, LongEd.LLoc, LongEd.LInfo,
@@ -86,8 +81,6 @@ int display_Long_edu(Education *educations) {
   }else {
     printf("invalid input\n");
       }
-  //}
-
 }
 
 /*
