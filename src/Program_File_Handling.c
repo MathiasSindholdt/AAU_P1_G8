@@ -114,7 +114,7 @@ LongEducation Read_Long_Education_File(int num) {
   LongEducation LongEd;
   char buf[50];
   snprintf(buf, 50, "data/longeducations/LongEducation%d.txt",
-           num); // prints "education{some integer}.txt" to the buffer
+           num-1); // prints "education{some integer}.txt" to the buffer
   char *file_name = malloc(sizeof(buf) / sizeof(buf[0])); // creates an array the size of the file name in the buffer
   file_name = buf;
 

@@ -1,1 +1,1 @@
-{AAU Biologi},{Kort Info},{Aalborg},0,3,3,0,0,3,0,3,0,1,1,0,-3,-2,1,0,A,4.0,
+{AAU Biologi},{Kort Info},{Aalborg},0,1,1,5,5,1,1,5,1,5,1,1,1,1,1,4,0,A,4.0,

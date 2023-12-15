@@ -1,1 +1,1 @@
-{KBH Film- og medievidenskab},{Kort Info},{CPH},3,0,0,0,3,2,0,0,0,0,0,0,-3,-2,1,6.0,B,02,
+{KBH Film- og medievidenskab},{Kort Info},{CPH},0,3,5,1,1,1,5,3,1,1,1,1,1,1,1,2,1,6.0,B,02,

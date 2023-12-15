@@ -1,1 +1,1 @@
-{KBH Politik og administration},{Kort Info},{Copenhagen},0,0,0,0,3,0,3,0,0,1,0,0,0,0,1,0,B,02,
+{KBH Politik og administration},{Kort Info},{Copenhagen},0,3,1,1,1,1,5,1,5,1,1,1,1,1,5,5,1,0,B,02,

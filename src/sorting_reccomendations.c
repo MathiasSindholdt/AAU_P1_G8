@@ -25,9 +25,11 @@ int KNN(Choice_Vector user_choices, Education *educations, int length) {
                                                  // vector to edu_choice
       usr_choice = user_choices.Answer[i]; // assigns user answer to usr_choice
       sum += pow((edu_choice - usr_choice), 2); // adds (a_1 - b_1)^2 to a running sum
+
     }
     educations[j].knn = sqrt(sum); // assings the square root of the sum to the knn value in the education struct
     sum = 0;
+
   }
   educations = edu_Sort(educations, length);
   return 0;
@@ -38,8 +40,8 @@ int display_results(Education *educations, Choice_Vector Usr) {
     if (Usr.grade > educations[i].Requirements.avg &&
         (Usr.slvl == educations[i].Requirements.level || Usr.slvl == 'A') &&
         Usr.sgrade >= educations[i].Requirements.grade) {
-      printf("%d | %s | %s | %s | %d \n", educations[i].ident, educations[i].Name, educations[i].Info,
-             educations[i].Location, i);
+      printf("%d | %s | %s | %s  \n", educations[i].ident, educations[i].Name, educations[i].Info,
+             educations[i].Location);
     }
   }
   return 0;
